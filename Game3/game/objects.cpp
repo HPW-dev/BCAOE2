@@ -1,8 +1,8 @@
 #include <functional>
 #include "objects.h"
-#include "Graphik.h"
-#include "settings.h"
-#include "interface.h"
+#include "../engine/Graphik.h"
+#include "../core/settings.h"
+#include "../engine/interface.h"
 
 std::vector<std::function<void ()>> spawn_order;
 

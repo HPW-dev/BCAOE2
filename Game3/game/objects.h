@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <SFML/Graphics.hpp>
-#include "Rect.h"
+#include "../core/Rect.h"
 
 // Все возможные типы объектов
 enum class Type {

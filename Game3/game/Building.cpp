@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Building.h"
-#include "level.h"
+#include "../game/Building.h"
+#include "../game/level.h"
 #include "objects.h"
-#include "settings.h"
+#include "../core/settings.h"
 
 rect get_default_hitbox(int x, int y) {
     return rect {

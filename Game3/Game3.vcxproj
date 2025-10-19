@@ -18,6 +18,28 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="core\Rect.cpp" />
+    <ClCompile Include="engine\Graphik.cpp" />
+    <ClCompile Include="engine\interface.cpp" />
+    <ClCompile Include="engine\Shrifts.cpp" />
+    <ClCompile Include="Game3.cpp" />
+    <ClCompile Include="game\Building.cpp" />
+    <ClCompile Include="game\level.cpp" />
+    <ClCompile Include="game\objects.cpp" />
+    <ClCompile Include="game\Players.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\Rect.h" />
+    <ClInclude Include="core\settings.h" />
+    <ClInclude Include="engine\Graphik.h" />
+    <ClInclude Include="engine\interface.h" />
+    <ClInclude Include="engine\Shrifts.h" />
+    <ClInclude Include="game\Building.h" />
+    <ClInclude Include="game\level.h" />
+    <ClInclude Include="game\objects.h" />
+    <ClInclude Include="game\Players.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -123,7 +145,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\Rage\source\repos\Game3\SFML-3.0.0\include;SFML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;C:\Users\Rage\source\repos\Game3\SFML-3.0.0\include;SFML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,29 +156,6 @@
       <AdditionalDependencies>sfml-system.lib;sfml-graphics.lib;sfml-audio.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Building.cpp" />
-    <ClCompile Include="Game3.cpp" />
-    <ClCompile Include="Graphik.cpp" />
-    <ClCompile Include="interface.cpp" />
-    <ClCompile Include="level.cpp" />
-    <ClCompile Include="objects.cpp" />
-    <ClCompile Include="Players.cpp" />
-    <ClCompile Include="Rect.cpp" />
-    <ClCompile Include="Shrifts.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Building.h" />
-    <ClInclude Include="Collision_detect.h" />
-    <ClInclude Include="Graphik.h" />
-    <ClInclude Include="interface.h" />
-    <ClInclude Include="level.h" />
-    <ClInclude Include="objects.h" />
-    <ClInclude Include="Players.h" />
-    <ClInclude Include="Rect.h" />
-    <ClInclude Include="settings.h" />
-    <ClInclude Include="Shrifts.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

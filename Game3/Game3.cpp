@@ -3,13 +3,13 @@
 #include <iostream>
 #include <ctime>
 #include <string>
-#include "settings.h"
-#include "Graphik.h"
-#include "Players.h"
-#include "Shrifts.h"
-#include "interface.h"
-#include "level.h"
-#include "objects.h"
+#include "core/settings.h"
+#include "engine/Graphik.h"
+#include "game/Players.h"
+#include "engine/Shrifts.h"
+#include "engine/interface.h"
+#include "game/level.h"
+#include "game/objects.h"
 using namespace std;
 
 void MakePlayers() 

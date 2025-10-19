@@ -1,4 +1,4 @@
-#include "Rect.h"
+#include "../core/Rect.h"
 
 bool rect::on_click(int mouse_x, int mouse_y) const {
     return

@@ -1,7 +1,7 @@
-#include "level.h"
+#include "../game/level.h"
 #include <cassert>
-#include "Graphik.h"
-#include "settings.h"
+#include "../engine/Graphik.h"
+#include "../core/settings.h"
 #include "objects.h"
 
 const int TEXTURE_X = 50;

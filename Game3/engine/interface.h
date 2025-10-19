@@ -1,10 +1,28 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Graphik.h"
+#include "../engine/Graphik.h"
 #include <string>
 #include <vector>
 #include <functional>
 using namespace std;
+
+/*
+core/common:
+- settings
+- rect
+
+game:
+- build
+- level
+- object
+- player
+
+engine:
+- Graphik.cpp/h
+- keyboard/input
+- Sound system
+- shrifts
+*/
 
 struct Build_button
 {
