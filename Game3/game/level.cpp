@@ -82,9 +82,9 @@ Level generate_level() {
         }
         
     }
-    
+
     // насажать деревьев
-    for (int i = 0; i < 1'000; ++i) {
+    for (int i = 0; i < 10'000; ++i) {
         Object Tree;
         Tree.texture = "Tree";
         Tree.x = rand()% (lvl.max_x * TEXTURE_X - TEXTURE_X);
