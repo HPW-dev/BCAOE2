@@ -3,6 +3,7 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <ctime>
 #include "core/settings.h"
 #include "engine/Graphik.h"
 #include "game/Players.h"
@@ -10,6 +11,7 @@
 #include "engine/interface.h"
 #include "game/level.h"
 #include "game/objects.h"
+#include "game/knight.h"
 using namespace std;
 
 void MakePlayers() 
@@ -42,6 +44,7 @@ void loading_textures() {
 	Load_Texture("Knight", "resource/Knight.png");
 	Load_Texture("Stone", "resource/Stone.png");
 	Load_Texture("Dirt", "resource/Dirt.png");
+	Load_Texture("Dirt", "resource/Dirt.png");
 	Load_Texture("Grass", "resource/Grass.png");
 	Load_Texture("Water", "resource/Water.png");
 	Load_Texture("Stone_iron", "resource/Stone_iron.png");
@@ -59,8 +62,7 @@ void loading_sounds() {
 int main()
 {
 	// сид рандома перемешивает генерацию чисел
-	auto seed = time(0);
-	srand(seed);
+	srand(time(0));
 
 	// начальная загрузка игры
 	loading_textures();
@@ -69,7 +71,12 @@ int main()
 	Loading_font();
 	MakePlayers();
 	auto level = generate_level();
+	level_game = &level;
 	int fps = 0;
+
+	// Этот код потом снести:
+	for (int i = 0; i <= 0; i++)
+		spawn(new Knight());
 	
 	// Делаем окно
 	sf::RenderWindow Okno(sf::VideoMode(sf::Vector2u(windowx,windowy)), "AOE");
@@ -103,7 +110,9 @@ int main()
 			mouseleft = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
 			mouseright = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
 			Conrol_interface(level, pos.x, pos.y, mouseright);
-        }
+        } else {
+			mouseleft = mouseright = false;
+		}
 		
 		Okno.clear(); // удалить предыдущий кадр
 		camera_movement(Okno, mouseposx, mouseposy, level.max_x*50 - windowx, level.max_y*50 - windowy);

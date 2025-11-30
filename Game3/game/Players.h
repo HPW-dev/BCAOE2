@@ -3,8 +3,7 @@
 #include <vector>
 using namespace std;
 
-struct Player
-{
+struct Player {
 	int food{};
 	int gold{};
 	int stone{};

@@ -18,60 +18,63 @@
     <ClCompile Include="Game3.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="level.cpp">
+    <ClCompile Include="core\Rect.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Players.cpp">
+    <ClCompile Include="engine\Graphik.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Graphik.cpp">
+    <ClCompile Include="engine\interface.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Shrifts.cpp">
+    <ClCompile Include="engine\Shrifts.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="interface.cpp">
+    <ClCompile Include="game\Building.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="objects.cpp">
+    <ClCompile Include="game\level.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Building.cpp">
+    <ClCompile Include="game\objects.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Rect.cpp">
+    <ClCompile Include="game\Players.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="game\knight.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="settings.h">
+    <ClInclude Include="core\Rect.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Graphik.h">
+    <ClInclude Include="core\settings.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Rect.h">
+    <ClInclude Include="engine\Graphik.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Collision_detect.h">
+    <ClInclude Include="engine\interface.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Players.h">
+    <ClInclude Include="engine\Shrifts.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Shrifts.h">
+    <ClInclude Include="game\Building.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="interface.h">
+    <ClInclude Include="game\level.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="level.h">
+    <ClInclude Include="game\objects.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="objects.h">
+    <ClInclude Include="game\Players.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Building.h">
+    <ClInclude Include="game\knight.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -25,6 +25,7 @@
     <ClCompile Include="engine\Shrifts.cpp" />
     <ClCompile Include="Game3.cpp" />
     <ClCompile Include="game\Building.cpp" />
+    <ClCompile Include="game\knight.cpp" />
     <ClCompile Include="game\level.cpp" />
     <ClCompile Include="game\objects.cpp" />
     <ClCompile Include="game\Players.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="engine\interface.h" />
     <ClInclude Include="engine\Shrifts.h" />
     <ClInclude Include="game\Building.h" />
+    <ClInclude Include="game\knight.h" />
     <ClInclude Include="game\level.h" />
     <ClInclude Include="game\objects.h" />
     <ClInclude Include="game\Players.h" />

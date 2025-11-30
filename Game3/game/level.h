@@ -21,7 +21,10 @@ struct Level {
 };
 
 // поставить текстуру в определённое место
-void set_tile(int x, int y, Tile tile);
+void set_tile(Level& lvl,int x, int y, Tile tile);
+
+// получить информацию о тайле
+Tile get_tile(int x, int y, Level& lvl);
 
 // true, если строительство по координатам разрешено
 bool check_to_build(const Level& lvl, int x, int y, int max_x, int max_y);
@@ -35,3 +38,5 @@ Level generate_level();
 void draw_level(sf::RenderWindow& Window, const Level& lvl);
 
 void camera_movement(sf::RenderWindow& Window, int x, int y, int max_x, int max_y);
+
+bool mouse_in_level(int x, int y);

@@ -17,40 +17,40 @@ void build(const std::string& name, int x, int y) {
     istakenbuild = false; // когда здание поставлено, можно выйти из режима постройки
 
     if (name == "Main") {
-        Object building;
-        building.texture = name;
-        building.x = (x / tile_size) * tile_size;
-        building.y = (y / tile_size) * tile_size;
-        building.hp = building.hp_max = 200;
-        building.type = Type::Main_house;
-        building.hitbox = get_default_hitbox(building.x, building.y);
+        Object* building = new Object();
+        building->texture = name;
+        building->x = (x / tile_size) * tile_size;
+        building->y = (y / tile_size) * tile_size;
+        building->hp = building->hp_max = 200;
+        building->type = Type::Main_house;
+        building->hitbox = get_default_hitbox(building->x, building->y);
         spawn(building);
     } else if (name == "Barraks") {
-        Object building;
-        building.texture = name;
-        building.x = (x / tile_size) * tile_size;
-        building.y = (y / tile_size) * tile_size;
-        building.hp = building.hp_max = 150;
-        building.type = Type::Barraks;
-        building.hitbox = get_default_hitbox(building.x, building.y);
+        Object* building = new Object();
+        building->texture = name;
+        building->x = (x / tile_size) * tile_size;
+        building->y = (y / tile_size) * tile_size;
+        building->hp = building->hp_max = 150;
+        building->type = Type::Barraks;
+        building->hitbox = get_default_hitbox(building->x, building->y);
         spawn(building);
     } else if (name == "Wall") {
-        Object building;
-        building.texture = name;
-        building.x = (x / tile_size) * tile_size;
-        building.y = (y / tile_size) * tile_size;
-        building.hp = building.hp_max = 50;
-        building.type = Type::Wall;
-        building.hitbox = get_default_hitbox(building.x, building.y);
+        Object* building = new Object();
+        building->texture = name;
+        building->x = (x / tile_size) * tile_size;
+        building->y = (y / tile_size) * tile_size;
+        building->hp = building->hp_max = 50;
+        building->type = Type::Wall;
+        building->hitbox = get_default_hitbox(building->x, building->y);
         spawn(building);
     } else if (name == "House") {
-        Object building;
-        building.texture = name;
-        building.x = (x / tile_size) * tile_size;
-        building.y = (y / tile_size) * tile_size;
-        building.hp = building.hp_max = 100;
-        building.type = Type::House;
-        building.hitbox = get_default_hitbox(building.x, building.y);
+        Object* building = new Object();
+        building->texture = name;
+        building->x = (x / tile_size) * tile_size;
+        building->y = (y / tile_size) * tile_size;
+        building->hp = building->hp_max = 100;
+        building->type = Type::House;
+        building->hitbox = get_default_hitbox(building->x, building->y);
         spawn(building);
     }
     else {

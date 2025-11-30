@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "game/level.h"
 
 inline int windowx = 1080;
 inline int windowy = 720;
@@ -17,3 +18,4 @@ inline int mouseposx = 0;
 inline int mouseposy = 0;
 inline bool mouseleft {};
 inline bool mouseright {};
+inline Level* level_game{};

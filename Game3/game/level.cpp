@@ -41,11 +41,16 @@ void take_pos(Level& lvl, int x, int y, int max_x, int max_y) {
                 if (tile_y + ty >= 0 && tile_y + ty < lvl.max_y)
                     lvl.tiles.at((tile_y + ty) * lvl.max_x + (tile_x + tx)).free_to_build = false;
 }
-
+Tile get_tile(int x, int y, Level& lvl) {
+    if (x >= 0 && x < lvl.max_x)
+        if (y >= 0 && y < lvl.max_y)
+            return(lvl.tiles[y * lvl.max_x + x]);
+            return{};
+}
 Level generate_level() {
     Level lvl;
-    lvl.max_x = 100;
-    lvl.max_y = 100;
+    lvl.max_x = 20;
+    lvl.max_y = 20;
     lvl.name = "Сгенерированный тестовый уровень\n";
     lvl.spawn_points = 2;
     lvl.tiles.resize(lvl.max_x * lvl.max_y);
@@ -66,7 +71,8 @@ Level generate_level() {
     for (int y = 0; y < lvl.max_y; ++y)
     for (int x = 0; x < lvl.max_x; ++x) {
         auto& tile = lvl.tiles[y * lvl.max_x + x];
-        auto f = std::cos(x / 5 + 0.02f)*10 * std::sin(y / 5 + 0.02f)*10;
+        auto f = std::cos(y * 5 - 0.7f)*4 * std::sin(y * 5 + 0.2f)*3;
+        //auto f = (x * y) * (y * 10);
         f -= 2.f;
         tile.canwalk = true;
         tile.canswim = false;
@@ -83,18 +89,23 @@ Level generate_level() {
         
     }
 
+    #define elif else if
+    
     // насажать деревьев
-    for (int i = 0; i < 10'000; ++i) {
-        Object Tree;
-        Tree.texture = "Tree";
-        Tree.x = rand()% (lvl.max_x * TEXTURE_X - TEXTURE_X);
-        Tree.y = rand()% (lvl.max_y * TEXTURE_Y - TEXTURE_Y);
-        Tree.hp = Tree.hp_max = 100;
-        Tree.type = Type::Tree;
-
-        const auto& tile = lvl.tiles.at(int(Tree.y / tile_size) * lvl.max_x + int(Tree.x / tile_size));
+    for (int i = 0; i < 1000; ++i) {
+        Object* Tree = new Object();
+        Tree->texture = "Tree";
+        Tree->x = rand() % (lvl.max_x * TEXTURE_X - TEXTURE_X);
+        Tree->y = rand() % (lvl.max_y * TEXTURE_Y - TEXTURE_Y);
+        Tree->hp = Tree->hp_max = 100;
+        Tree->type = Type::Tree;
+        int cords = int(Tree->y / tile_size) * lvl.max_x + int(Tree->x / tile_size);
+        const auto& tile = lvl.tiles.at(cords);
         if (tile.texture == "Grass" || tile.texture == "Dirt") {   
             spawn(Tree);
+        }
+        else {
+            i -= 1;
         }
     }
 
@@ -147,4 +158,9 @@ void draw_level(sf::RenderWindow& Window, const Level& lvl) {
                 Draw_Texture(Window, pos_x, pos_y, lvl.tiles[y * lvl.max_x + x].texture);
         }
     }
+}
+
+bool mouse_in_level(int x, int y) {
+    const auto bound = 50;
+	return (x >= bound) && (y >= bound) && (x < windowx - bound) && (y < windowy - bound);
 }
