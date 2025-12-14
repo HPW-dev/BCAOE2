@@ -3,6 +3,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "../core/Rect.h"
+#include "Players.h"
 
 // Все возможные типы объектов
 enum class Type {
@@ -37,11 +38,14 @@ public:
     int damage {}; // урон при атаке
     rect hitbox {}; // хитбокс для попадания по объекту
     bool show_interface {}; // если True - можно увидеть интерфейс взаимодействия
-    
+    bool collided {}; // если True, то было столкновение
+    Player* player {}; // к кому принадлежит объект
+
     void draw(sf::RenderWindow& window) const;
     virtual void action(float dt); // действие объекта (в каждом кадре)
     void on_click(); // нажали мышкой по объекту
     bool check_hitbox(const Object other);
+    
 };
 
 inline std::vector<Object*> objects;

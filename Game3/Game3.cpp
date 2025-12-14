@@ -72,11 +72,19 @@ int main()
 	MakePlayers();
 	auto level = generate_level();
 	level_game = &level;
-	int fps = 0;
 
 	// Этот код потом снести:
-	for (int i = 0; i <= 0; i++)
-		spawn(new Knight());
+	for (int i = 0; i <= 1; i++) {
+		auto k = new Knight(5, 5);
+		k->player = Players[0].Nickname;
+		spawn(k);
+	}
+
+	for (int i = 0; i <= 2; i++) {
+		auto k = new Knight(50*5, 50*10);
+		k->player = Players[1].Nickname;
+		spawn(k);
+	}
 	
 	// Делаем окно
 	sf::RenderWindow Okno(sf::VideoMode(sf::Vector2u(windowx,windowy)), "AOE");
@@ -100,7 +108,8 @@ int main()
             }
 
         }
-
+		// контроль текущего игрока
+		
 		// тут мышка
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) || 
 			sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)) {

@@ -20,8 +20,15 @@ void spawn(Object* obj)
 void Object::draw(sf::RenderWindow& window) const
 {
     auto pos_x = this->x - camera_x;
-    auto pos_y = this->y - camera_y - 50;
+    auto pos_y = this->y - camera_y;
     const auto MAX_TEXTURE_SIZE = 100;
+    // сдвигать некоторые объекты вверх, чтобы не стояли в воде
+    if (this->type == Type::Tree ||
+        this->type == Type::Knight ||
+        this->type == Type::Villager)
+    {
+        pos_y -= 50;
+    }
     if (pos_x >= windowx + MAX_TEXTURE_SIZE) return;
     if (pos_y >= windowy + MAX_TEXTURE_SIZE) return;
     if (pos_x < -MAX_TEXTURE_SIZE) return;
@@ -30,10 +37,10 @@ void Object::draw(sf::RenderWindow& window) const
     Draw_Texture(window, pos_x, pos_y, this->texture);
 
     // рисовать прямоугольник тут:
-    rect h = hitbox;
+    /* rect h = hitbox;
     h.x = pos_x;
     h.y = pos_y;
-    Draw_rect(window, h, false);
+    Draw_rect(window, h, false); */
 }
 
 void draw_objects(sf::RenderWindow& window)
@@ -53,6 +60,7 @@ void Object::action(float dt) {
         y = 20;
     hitbox.x = x;
     hitbox.y = y;
+    //std::cout << "Hitbox: x" << hitbox.x << ", y " << hitbox.y << "\n";
 }
 
 void Object::on_click() {
@@ -94,7 +102,11 @@ bool Object::check_hitbox(const Object other) {
     auto a = this->hitbox;
     auto b = other.hitbox;
 
-    //if (/*проверка*/)
-    //    return true; // врезались
-    //return false; // нет столкновений
+    if (&a == &b)
+        return false;
+
+    return (a.x < b.x + b.w &&
+            a.x + a.w > b.x &&
+            a.y < b.y + b.h &&
+            a.y + a.h > b.y);
 }
