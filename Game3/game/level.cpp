@@ -77,10 +77,13 @@ Level generate_level() {
         tile.canwalk = true;
         tile.canswim = false;
         switch (unsigned(f) % 4) {
-            case 0: tile.texture = "Grass"; break;
+            //case 0: tile.texture = "Grass"; break;
+            case 0: tile.texture = "Snow"; break;
             case 1: tile.texture = "Dirt"; break;
             case 2: tile.texture = "Stone"; break;
-            case 3: tile.texture = "Water";
+            case 3:
+                // tile.texture = "Water";
+                tile.texture = "Water-iced";
                 tile.canswim = true;
                 tile.canwalk = false;
                 tile.free_to_build = false;
@@ -94,7 +97,8 @@ Level generate_level() {
     // насажать деревьев
     for (int i = 0; i < 1000; ++i) {
         Object* Tree = new Object();
-        Tree->texture = "Tree";
+        //Tree->texture = "Tree";
+        Tree->texture = "Tree-xmas";
         Tree->x = rand() % (lvl.max_x * TEXTURE_X - TEXTURE_X);
         Tree->y = rand() % (lvl.max_y * TEXTURE_Y - TEXTURE_Y);
         Tree->hp = Tree->hp_max = 100;
