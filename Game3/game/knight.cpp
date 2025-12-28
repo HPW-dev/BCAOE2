@@ -45,7 +45,7 @@ void Knight::action(float dt) {
             target_y = mouseposy + camera_y;
         }
     } else {
-        if (hp_target <= 0)
+        if (hp_target <= 0 || botfps % 5 == 0)
             target_bot();
     }
 

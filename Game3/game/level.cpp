@@ -71,16 +71,20 @@ Level generate_level() {
     for (int y = 0; y < lvl.max_y; ++y)
     for (int x = 0; x < lvl.max_x; ++x) {
         auto& tile = lvl.tiles[y * lvl.max_x + x];
-        auto f = std::cos(y * 5 - 0.7f)*4 * std::sin(y * 5 + 0.2f)*3;
-        //auto f = (x * y) * (y * 10);
+       // auto f = std::cos(y * 3 - 0.1f)*1.5 * std::sin(y * 2 + 0.2f)*3;
+        auto f = (x * y) * (y * 10);
         f -= 2.f;
         tile.canwalk = true;
         tile.canswim = false;
         switch (unsigned(f) % 4) {
-            case 0: tile.texture = "Grass"; break;
+            //case 0: tile.texture = "Grass"; break;
+            case 0: tile.texture = "Snow"; break;
             case 1: tile.texture = "Dirt"; break;
-            case 2: tile.texture = "Stone"; break;
-            case 3: tile.texture = "Water";
+            //case 2: tile.texture = "Stone"; break;
+            case 2: tile.texture = "Stone-xmas"; break;
+            case 3:
+                // tile.texture = "Water";
+                tile.texture = "Water-iced";
                 tile.canswim = true;
                 tile.canwalk = false;
                 tile.free_to_build = false;
@@ -94,14 +98,15 @@ Level generate_level() {
     // насажать деревьев
     for (int i = 0; i < 1000; ++i) {
         Object* Tree = new Object();
-        Tree->texture = "Tree";
+        //Tree->texture = "Tree";
+        Tree->texture = "Tree-xmas";
         Tree->x = rand() % (lvl.max_x * TEXTURE_X - TEXTURE_X);
         Tree->y = rand() % (lvl.max_y * TEXTURE_Y - TEXTURE_Y);
         Tree->hp = Tree->hp_max = 100;
         Tree->type = Type::Tree;
         int cords = int(Tree->y / tile_size) * lvl.max_x + int(Tree->x / tile_size);
         const auto& tile = lvl.tiles.at(cords);
-        if (tile.texture == "Grass" || tile.texture == "Dirt") {   
+        if (tile.texture == "Grass" || tile.texture == "Dirt" || tile.texture == "Snow") {
             spawn(Tree);
         }
         else {

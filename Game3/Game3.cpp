@@ -42,13 +42,18 @@ void loading_textures() {
 	Load_Texture("Barraks", "resource/Barracks.png");
 	Load_Texture("Villager", "resource/Villager.png");
 	Load_Texture("Knight", "resource/Knight.png");
+	Load_Texture("Knight-xmas", "resource/Knight-xmas.png");
 	Load_Texture("Stone", "resource/Stone.png");
+	Load_Texture("Stone-xmas", "resource/Stone-xmas.png");
 	Load_Texture("Dirt", "resource/Dirt.png");
 	Load_Texture("Dirt", "resource/Dirt.png");
 	Load_Texture("Grass", "resource/Grass.png");
+	Load_Texture("Snow", "resource/Snow.png");
 	Load_Texture("Water", "resource/Water.png");
+	Load_Texture("Water-iced", "resource/Water-iced.png");
 	Load_Texture("Stone_iron", "resource/Stone_iron.png");
 	Load_Texture("Tree", "resource/Tree.png");
+	Load_Texture("Tree-xmas", "resource/Tree-xmas.png");
 	Load_Texture("Gold_iron", "resource/Gold_iron.png");
 	Load_Texture("Fish", "resource/Fish.png");
 	Load_Texture("Kvadrat", "resource/Kvadrat.png");
@@ -83,6 +88,7 @@ int main()
 	for (int i = 0; i <= 2; i++) {
 		auto k = new Knight(50*5, 50*10);
 		k->player = &Players[1];
+		k->texture = "Knight-xmas"; // новогодний бот
 		spawn(k);
 	}
 	
