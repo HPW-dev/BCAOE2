@@ -10,11 +10,11 @@ public:
     float safe_y;
     float target_x;
     float target_y;
-    std::string player;
-
-    bool is_bot();
+    int hp_target {0};
     
     bool is_water(int x, int y);
+
+    void target_bot();
 
     Knight(int _x, int _y);
     void action(float dt) override;

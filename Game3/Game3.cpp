@@ -76,13 +76,13 @@ int main()
 	// Этот код потом снести:
 	for (int i = 0; i <= 1; i++) {
 		auto k = new Knight(5, 5);
-		k->player = Players[0].Nickname;
+		k->player = &Players[0];
 		spawn(k);
 	}
 
 	for (int i = 0; i <= 2; i++) {
 		auto k = new Knight(50*5, 50*10);
-		k->player = Players[1].Nickname;
+		k->player = &Players[1];
 		spawn(k);
 	}
 	
@@ -132,7 +132,7 @@ int main()
 		Draw_interface(Okno);
 		Okno.display(); // показать кадр игры
 		fps++;
-
+		botfps++;
 		auto time_end = clock.getElapsedTime();
 		if ((time_end - time_start).asSeconds() > 1) {
 			game_fps = fps;

@@ -1,6 +1,7 @@
+#include <random>
+#include <algorithm>
 #include "knight.h"
 #include "core/settings.h"
-#include "Players.h"
 
 Knight::Knight(int _x, int _y) {
     texture = "Knight";
@@ -24,15 +25,6 @@ Knight::Knight(int _x, int _y) {
     //bool show_interface {}; // если True - можно увидеть интерфейс взаимодействия
 }
 
-bool Knight::is_bot()
-{
-    for (auto p: Players) {
-        if (p.botornotbot == true && p.Nickname == this->player)
-            return true;
-    }
-
-    return false;
-}
 bool Knight::is_water(int x, int y) {
     x /= 50;
     y /= 50;
@@ -46,10 +38,15 @@ bool Knight::is_water(int x, int y) {
 void Knight::action(float dt) {
     Object::action(dt);
 
-    // если нажали мышкой:
-    if (mouseleft && mouse_in_level(mouseposx, mouseposy) && !is_bot()) {
-        target_x = mouseposx + camera_x;
-        target_y = mouseposy + camera_y;
+    if (!is_bot()) {
+        // если нажали мышкой:
+        if (mouseleft && mouse_in_level(mouseposx, mouseposy)) {
+            target_x = mouseposx + camera_x;
+            target_y = mouseposy + camera_y;
+        }
+    } else {
+        if (hp_target <= 0)
+            target_bot();
     }
 
     auto dx = target_x - x;
@@ -96,4 +93,21 @@ void Knight::action(float dt) {
     }
     safe_x = x;
     safe_y = y;
+}
+
+void Knight::target_bot() {
+    std::vector<Object*> Players_to_atack;
+    
+    for (auto& o: objects)
+        if (!o->is_bot() && o->player != nullptr)
+            Players_to_atack.push_back(o);
+    
+    // перемешать список объектов пригодных для атаки
+    std::default_random_engine random;
+    std::shuffle(Players_to_atack.begin(), Players_to_atack.end(), random);
+    
+    Object* target = Players_to_atack[0];
+    target_x = target->x;
+    target_y = target->y;
+    hp_target = target->hp;
 }

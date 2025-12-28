@@ -18,5 +18,6 @@ inline bool interfacefree = true;
 inline int mouseposx = 0;
 inline int mouseposy = 0;
 inline bool mouseleft {};
+inline int botfps = 0;
 inline bool mouseright {};
 inline Level* level_game{};

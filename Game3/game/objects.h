@@ -41,6 +41,7 @@ public:
     bool collided {}; // если True, то было столкновение
     Player* player {}; // к кому принадлежит объект
 
+    bool is_bot();
     void draw(sf::RenderWindow& window) const;
     virtual void action(float dt); // действие объекта (в каждом кадре)
     void on_click(); // нажали мышкой по объекту

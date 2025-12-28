@@ -1,6 +1,7 @@
 #include <functional>
 #include <cmath>
 #include "objects.h"
+#include "Players.h"
 #include "../engine/Graphik.h"
 #include "../core/settings.h"
 #include "../engine/interface.h"
@@ -9,6 +10,16 @@
 using namespace std;
 
 std::vector<std::function<void ()>> spawn_order;
+
+bool Object::is_bot()
+{
+    for (auto& p : Players) {
+        if (&p == player && p.botornotbot == true)
+            return true;
+    }
+
+    return false;
+}
 
 void spawn(Object* obj)
 {
