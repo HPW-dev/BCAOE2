@@ -80,7 +80,8 @@ Level generate_level() {
             //case 0: tile.texture = "Grass"; break;
             case 0: tile.texture = "Snow"; break;
             case 1: tile.texture = "Dirt"; break;
-            case 2: tile.texture = "Stone"; break;
+            //case 2: tile.texture = "Stone"; break;
+            case 2: tile.texture = "Stone-xmas"; break;
             case 3:
                 // tile.texture = "Water";
                 tile.texture = "Water-iced";

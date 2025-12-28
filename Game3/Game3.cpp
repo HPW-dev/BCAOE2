@@ -44,6 +44,7 @@ void loading_textures() {
 	Load_Texture("Knight", "resource/Knight.png");
 	Load_Texture("Knight-xmas", "resource/Knight-xmas.png");
 	Load_Texture("Stone", "resource/Stone.png");
+	Load_Texture("Stone-xmas", "resource/Stone-xmas.png");
 	Load_Texture("Dirt", "resource/Dirt.png");
 	Load_Texture("Dirt", "resource/Dirt.png");
 	Load_Texture("Grass", "resource/Grass.png");
