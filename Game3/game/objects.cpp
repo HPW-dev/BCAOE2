@@ -48,10 +48,12 @@ void Object::draw(sf::RenderWindow& window) const
     Draw_Texture(window, pos_x, pos_y, this->texture);
 
     // рисовать прямоугольник тут:
-    /* rect h = hitbox;
+    #if 0
+    rect h = hitbox;
     h.x = pos_x;
     h.y = pos_y;
-    Draw_rect(window, h, false); */
+    Draw_rect(window, h, false);
+    #endif
 }
 
 void draw_objects(sf::RenderWindow& window)

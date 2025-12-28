@@ -103,10 +103,18 @@ Level generate_level() {
         Tree->x = rand() % (lvl.max_x * TEXTURE_X - TEXTURE_X);
         Tree->y = rand() % (lvl.max_y * TEXTURE_Y - TEXTURE_Y);
         Tree->hp = Tree->hp_max = 100;
+        /*
+        Tree->hitbox.x = Tree->x;
+        Tree->hitbox.y = Tree->y;
+        Tree->hitbox.w = 10;
+        Tree->hitbox.h = 50;
+        */
         Tree->type = Type::Tree;
         int cords = int(Tree->y / tile_size) * lvl.max_x + int(Tree->x / tile_size);
-        const auto& tile = lvl.tiles.at(cords);
+        auto& tile = lvl.tiles.at(cords);
         if (tile.texture == "Grass" || tile.texture == "Dirt" || tile.texture == "Snow") {
+            tile.canwalk = false;
+            tile.free_to_build = false;
             spawn(Tree);
         }
         else {
