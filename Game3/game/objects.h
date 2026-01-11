@@ -40,7 +40,9 @@ public:
     bool show_interface {}; // если True - можно увидеть интерфейс взаимодействия
     bool collided {}; // если True, то было столкновение
     Player* player {}; // к кому принадлежит объект
+    int attack_speed {}; // как часто наносится урон
 
+    virtual void kill(Object* other);
     bool is_bot();
     void draw(sf::RenderWindow& window) const;
     virtual void action(float dt); // действие объекта (в каждом кадре)

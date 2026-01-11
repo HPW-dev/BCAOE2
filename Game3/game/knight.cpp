@@ -1,4 +1,5 @@
 #include <random>
+#include <iostream>
 #include <algorithm>
 #include "knight.h"
 #include "core/settings.h"
@@ -21,6 +22,7 @@ Knight::Knight(int _x, int _y) {
     hitbox.y = y;
     hitbox.w = 20;
     hitbox.h = 20;
+    attack_speed = 120; int attack_speed;
     
     //bool show_interface {}; // если True - можно увидеть интерфейс взаимодействия
 }
@@ -72,12 +74,21 @@ void Knight::action(float dt) {
         dist = 0;
     }
 
+    collided = false; // произошло столкновение хоть с кем-то
     // проверить столкновения
-    collided = false;
     for (auto& o: objects) {
         if (this != o) {
             auto d = distance(x, y, o->x, o->y);
-            collided |= (d <= 25);
+            bool low_distance = d <= 25; // близко к объекту
+            bool time_to_attack = fps % attack_speed == 0;
+            bool other_player = o->player != this->player;
+            collided |= low_distance;
+            if (low_distance && time_to_attack && other_player) {
+                o->hp -= damage;
+                //std::cout << texture << " attack " << o->texture << std::endl;
+            }
+            if (o->hp <= 0)
+                o->kill(this);
         }
     }
     // если врезались, то дёргаемся
@@ -95,19 +106,19 @@ void Knight::action(float dt) {
     safe_y = y;
 }
 
-void Knight::target_bot() {
-    std::vector<Object*> Players_to_atack;
-    
-    for (auto& o: objects)
-        if (!o->is_bot() && o->player != nullptr)
-            Players_to_atack.push_back(o);
-    
-    // перемешать список объектов пригодных для атаки
-    std::default_random_engine random;
-    std::shuffle(Players_to_atack.begin(), Players_to_atack.end(), random);
-    
-    Object* target = Players_to_atack[0];
-    target_x = target->x;
-    target_y = target->y;
-    hp_target = target->hp;
-}
+    void Knight::target_bot() {
+        std::vector<Object*> Players_to_atack;
+
+        for (auto& o : objects)
+            if (!o->is_bot() && o->player != nullptr)
+                Players_to_atack.push_back(o);
+
+        // перемешать список объектов пригодных для атаки
+        std::default_random_engine random;
+        std::shuffle(Players_to_atack.begin(), Players_to_atack.end(), random);
+
+        Object* target = Players_to_atack[0];
+        target_x = target->x;
+        target_y = target->y;
+        hp_target = target->hp;
+    }

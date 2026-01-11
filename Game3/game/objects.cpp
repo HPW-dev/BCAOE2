@@ -59,7 +59,8 @@ void Object::draw(sf::RenderWindow& window) const
 void draw_objects(sf::RenderWindow& window)
 {
     for (auto obj: objects)
-        obj->draw(window);
+        if (obj->hp > 0)
+            obj->draw(window);
 }
 
 void Object::action(float dt) {
@@ -79,7 +80,6 @@ void Object::action(float dt) {
 void Object::on_click() {
     // действие при нажатии
 }
-
 static void check_click() {
     for (auto obj: objects) {
         auto pos_x = mouseposx + camera_x;
@@ -100,9 +100,11 @@ void update_objects(float dt)
     spawn_order.clear();
 
     for (auto obj: objects)
-        obj->action(dt);
+        if (obj->hp > 0)
+            obj->action(dt);
 
     check_click();
+        
 }
 
 double distance(double ax, double ay, double bx, double by) {
@@ -122,4 +124,8 @@ bool Object::check_hitbox(const Object other) {
             a.x + a.w > b.x &&
             a.y < b.y + b.h &&
             a.y + a.h > b.y);
+}
+
+void Object::kill(Object* other) {
+
 }

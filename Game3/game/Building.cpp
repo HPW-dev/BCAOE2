@@ -3,7 +3,6 @@
 #include "../game/level.h"
 #include "objects.h"
 #include "../core/settings.h"
-
 rect get_default_hitbox(int x, int y) {
     return rect {
         .x = float(x),
