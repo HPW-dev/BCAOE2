@@ -107,12 +107,14 @@ void Knight::action(float dt) {
 }
 
     void Knight::target_bot() {
+        
         std::vector<Object*> Players_to_atack;
 
         for (auto& o : objects)
             if (!o->is_bot() && o->player != nullptr)
                 Players_to_atack.push_back(o);
-
+        if (Players_to_atack.empty())
+            return;
         // перемешать список объектов пригодных для атаки
         std::default_random_engine random;
         std::shuffle(Players_to_atack.begin(), Players_to_atack.end(), random);

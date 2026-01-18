@@ -1,4 +1,5 @@
 #include <functional>
+#include <algorithm>
 #include <cmath>
 #include "objects.h"
 #include "Players.h"
@@ -102,9 +103,12 @@ void update_objects(float dt)
     for (auto obj: objects)
         if (obj->hp > 0)
             obj->action(dt);
-
     check_click();
-        
+
+    std::erase_if(objects, [](Object* obj)
+    {
+        return obj->hp <= 0;
+    });
 }
 
 double distance(double ax, double ay, double bx, double by) {

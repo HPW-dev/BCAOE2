@@ -3,6 +3,7 @@
 #include "../engine/Graphik.h"
 #include "../core/settings.h"
 #include "objects.h"
+#include "Tree.h"
 
 const int TEXTURE_X = 50;
 const int TEXTURE_Y = 50;
@@ -97,25 +98,25 @@ Level generate_level() {
     
     // насажать деревьев
     for (int i = 0; i < 1000; ++i) {
-        Object* Tree = new Object();
+        Object* tree = new Tree();
         //Tree->texture = "Tree";
-        Tree->texture = "Tree-xmas";
-        Tree->x = rand() % (lvl.max_x * TEXTURE_X - TEXTURE_X);
-        Tree->y = rand() % (lvl.max_y * TEXTURE_Y - TEXTURE_Y);
-        Tree->hp = Tree->hp_max = 100;
+        tree->texture = "Tree-xmas";
+        tree->x = rand() % (lvl.max_x * TEXTURE_X - TEXTURE_X);
+        tree->y = rand() % (lvl.max_y * TEXTURE_Y - TEXTURE_Y);
+        tree->hp = tree->hp_max = 100;
         /*
         Tree->hitbox.x = Tree->x;
         Tree->hitbox.y = Tree->y;
         Tree->hitbox.w = 10;
         Tree->hitbox.h = 50;
         */
-        Tree->type = Type::Tree;
-        int cords = int(Tree->y / tile_size) * lvl.max_x + int(Tree->x / tile_size);
+        tree->type = Type::Tree;
+        int cords = int(tree->y / tile_size) * lvl.max_x + int(tree->x / tile_size);
         auto& tile = lvl.tiles.at(cords);
         if (tile.texture == "Grass" || tile.texture == "Dirt" || tile.texture == "Snow") {
             tile.canwalk = false;
             tile.free_to_build = false;
-            spawn(Tree);
+            spawn(tree);
         }
         else {
             i -= 1;

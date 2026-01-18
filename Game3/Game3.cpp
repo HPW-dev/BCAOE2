@@ -85,7 +85,7 @@ int main()
 		spawn(k);
 	}
 
-	for (int i = 0; i <= 2; i++) {
+	for (int i = 0; i <= 5; i++) {
 		auto k = new Knight(50*5, 50*10);
 		k->player = &Players[1];
 		k->texture = "Knight-xmas"; // новогодний бот

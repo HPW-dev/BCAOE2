@@ -29,6 +29,7 @@
     <ClCompile Include="game\level.cpp" />
     <ClCompile Include="game\objects.cpp" />
     <ClCompile Include="game\Players.cpp" />
+    <ClCompile Include="Tree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\Rect.h" />
@@ -41,6 +42,7 @@
     <ClInclude Include="game\level.h" />
     <ClInclude Include="game\objects.h" />
     <ClInclude Include="game\Players.h" />
+    <ClInclude Include="Tree.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
